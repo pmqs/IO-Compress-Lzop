@@ -14,7 +14,7 @@ use IO::Compress::Lzop::Constants ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.000_09';
+$VERSION = '2.000_11';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -209,7 +209,9 @@ __END__
 =head1 NAME
 
 
-IO::Compress::Lzop - Perl interface to write lzop files/buffers
+
+IO::Compress::Lzop - Write lzop files/buffers
+ 
  
 
 =head1 SYNOPSIS
@@ -931,9 +933,6 @@ L<Compress::Zlib::FAQ|Compress::Zlib::FAQ>
 L<File::GlobMapper|File::GlobMapper>, L<Archive::Zip|Archive::Zip>,
 L<Archive::Tar|Archive::Tar>,
 L<IO::Zlib|IO::Zlib>
-
-
-
 
 
 

@@ -1,6 +1,20 @@
 CHANGES
 -------
 
+  2.000_11 22 March 2006
+
+      * Beefed up 050interop-lzop.t to check that the external lzop command
+        works as expected before starting the tests. This means that
+        this test harness will just be skipped on problematic systems.
+
+  2.000_10 13 March 2006
+
+      * Documentation updates.
+
+  2.000_09 3 March 2006
+
+      * Released to CPAN.
+
   2.000_08 2 March 2006
 
       * Split IO::Compress::Lzop into its own distribution.

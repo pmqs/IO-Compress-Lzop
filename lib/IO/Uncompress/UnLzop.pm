@@ -15,14 +15,14 @@ use IO::Compress::Lzop::Constants ;
 require Exporter ;
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $UnLzopError);
 
-$VERSION = '2.000_09';
+$VERSION = '2.000_11';
 $UnLzopError = '';
 
 @ISA    = qw( Exporter IO::Uncompress::Base );
 @EXPORT_OK = qw( $UnLzopError unlzop ) ;
-%EXPORT_TAGS = %IO::Uncompress::Base::EXPORT_TAGS ;
+#%EXPORT_TAGS = %IO::Uncompress::Base::EXPORT_TAGS ;
 push @{ $EXPORT_TAGS{all} }, @EXPORT_OK ;
-Exporter::export_ok_tags('all');
+#Exporter::export_ok_tags('all');
 
 
 sub new
@@ -295,7 +295,9 @@ __END__
 =head1 NAME
 
 
-IO::Uncompress::UnLzop - Perl interface to read lzop files/buffers
+
+IO::Uncompress::UnLzop - Read lzop files/buffers
+
 
 
 =head1 SYNOPSIS
@@ -367,6 +369,9 @@ This module provides a Perl interface that allows the reading of
 lzo files/buffers.
 
 For writing lzop files/buffers, see the companion module IO::Compress::Lzop.
+
+
+
 
 
 
@@ -1013,9 +1018,6 @@ L<Compress::Zlib::FAQ|Compress::Zlib::FAQ>
 L<File::GlobMapper|File::GlobMapper>, L<Archive::Zip|Archive::Zip>,
 L<Archive::Tar|Archive::Tar>,
 L<IO::Zlib|IO::Zlib>
-
-
-
 
 
 

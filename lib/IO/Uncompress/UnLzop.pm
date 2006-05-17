@@ -15,7 +15,7 @@ use IO::Compress::Lzop::Constants ;
 require Exporter ;
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $UnLzopError);
 
-$VERSION = '2.000_11';
+$VERSION = '2.000_12';
 $UnLzopError = '';
 
 @ISA    = qw( Exporter IO::Uncompress::Base );
@@ -501,9 +501,13 @@ If the C<$output> parameter is any other type, C<undef> will be returned.
 
 =head2 Notes
 
-When C<$input> maps to multiple files/buffers and C<$output> is a single
-file/buffer the uncompressed input files/buffers will all be stored
-in C<$output> as a single uncompressed stream.
+
+When C<$input> maps to multiple compressed files/buffers and C<$output> is
+a single file/buffer, after uncompression C<$output> will contain a
+concatenation of all the uncompressed data from each of the input
+files/buffers.
+
+
 
 
 

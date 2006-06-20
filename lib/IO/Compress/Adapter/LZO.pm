@@ -8,7 +8,7 @@ use IO::Compress::Base::Common qw(:Status);
 use Compress::LZO qw(crc32 adler32);
 
 our ($VERSION);
-$VERSION = '2.000_12';
+$VERSION = '2.000_13';
 
 sub mkCompObject
 {
@@ -34,7 +34,7 @@ sub compr
     my $self = shift ;
 
     $self->{Buffer} .= ${ $_[0] } ;
-    return $self->writeBlock($_[1], 0)
+    return $self->writeBlock(\$_[1], 0)
         if length $self->{Buffer} >= $self->{BlockSize} ;
     
 
@@ -48,7 +48,7 @@ sub flush
     return STATUS_OK
         unless length $self->{Buffer};
 
-    return $self->writeBlock($_[0], 1);
+    return $self->writeBlock(\$_[0], 1);
 }
 
 sub close
@@ -58,7 +58,7 @@ sub close
     return STATUS_OK
         unless length $self->{Buffer};
 
-    return $self->writeBlock($_[0], 1);
+    return $self->writeBlock(\$_[0], 1);
 }
 
 sub writeBlock
@@ -84,7 +84,7 @@ sub writeBlock
 sub writeOneBlock
 {
     my $self   = shift;
-    my $buff = shift ;
+    my $buff = shift;
 
     #my $cmp = Compress::LZO::my_compress($self->{Buffer});
     my $cmp = Compress::LZO::compress($$buff);

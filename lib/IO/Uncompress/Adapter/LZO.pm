@@ -8,7 +8,7 @@ use IO::Compress::Base::Common qw(:Status);
 use Compress::LZO ;
 
 our ($VERSION, @ISA);
-$VERSION = '2.000_12';
+$VERSION = '2.000_13';
 
 
 sub mkUncompObject

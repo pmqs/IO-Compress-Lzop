@@ -14,7 +14,7 @@ use IO::Compress::Lzop::Constants ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.000_12';
+$VERSION = '2.000_13';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -445,7 +445,7 @@ L</"Constructor Options"> section below.
 
 =over 5
 
-=item AutoClose =E<gt> 0|1
+=item C<< AutoClose => 0|1 >>
 
 This option applies to any input or output data streams to 
 C<lzop> that are filehandles.
@@ -457,8 +457,7 @@ completed.
 This parameter defaults to 0.
 
 
-
-=item BinModeIn =E<gt> 0|1
+=item C<< BinModeIn => 0|1 >>
 
 When reading from a file or filehandle, set C<binmode> before reading.
 
@@ -468,7 +467,7 @@ Defaults to 0.
 
 
 
-=item -Append =E<gt> 0|1
+=item C<< Append => 0|1 >>
 
 TODO
 
@@ -585,7 +584,7 @@ C<OPTS> is any combination of the following options:
 
 =over 5
 
-=item AutoClose =E<gt> 0|1
+=item C<< AutoClose => 0|1 >>
 
 This option is only valid when the C<$output> parameter is a filehandle. If
 specified, and the value is true, it will result in the C<$output> being
@@ -594,7 +593,7 @@ object is destroyed.
 
 This parameter defaults to 0.
 
-=item Append =E<gt> 0|1
+=item C<< Append => 0|1 >>
 
 Opens C<$output> in append mode. 
 
@@ -625,13 +624,13 @@ to it.  Otherwise the file pointer will not be moved.
 This parameter defaults to 0.
 
 
-=item -Name =E<gt> $string
+=item C<< Name => $string >>
 
 Stores the contents of C<$string> in the name field lzop header. 
 
 If C<Name> is not specified, no gzip NAME field will be created.
 
-=item Time =E<gt> $number
+=item C<< Time => $number >>
 
 Sets the Time field in the lzop header to $number.
 
@@ -667,7 +666,7 @@ TODO
 
 
 
-=item -Strict =E<gt> 0|1
+=item C<< Strict => 0|1 >>
 
 
 
@@ -884,16 +883,10 @@ Usage is
 
 Closes the current compressed data stream and starts a new one.
 
-OPTS consists of the following sub-set of the the options that are
-available when creating the C<$z> object,
+OPTS consists of any of the the options that are available when creating
+the C<$z> object.
 
-=over 5
-
-
-
-
-
-=back
+See the L</"Constructor Options"> section for more details.
 
 
 
@@ -923,6 +916,11 @@ For
 =head1 EXAMPLES
 
 TODO
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@ use IO::Compress::Base::Common qw(:Status);
 use Compress::LZO qw(crc32 adler32);
 
 our ($VERSION);
-$VERSION = '2.000_13';
+$VERSION = '2.000_14';
 
 sub mkCompObject
 {

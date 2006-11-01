@@ -1,6 +1,10 @@
 CHANGES
 -------
 
+  2.001 1 November 2006
+
+      * Remove beta status.
+
   2.000_11 22 March 2006
 
       * Beefed up 050interop-lzop.t to check that the external lzop command

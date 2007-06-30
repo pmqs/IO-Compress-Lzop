@@ -16,6 +16,7 @@ t/105oneshot-lzop.t
 t/106prime-lzop.t
 t/107multi-lzop.t
 t/108anyunc-lzop.t
+t/110encode-lzop.t
 t/999pod.t
 t/Test/Builder.pm
 t/Test/More.pm
@@ -23,6 +24,7 @@ t/Test/Simple.pm
 t/compress/any.pl
 t/compress/anyunc.pl
 t/compress/destroy.pl
+t/compress/encode.pl
 t/compress/generic.pl
 t/compress/merge.pl
 t/compress/multi.pl

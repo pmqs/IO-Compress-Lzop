@@ -6,7 +6,6 @@ lib/IO/Compress/Adapter/LZO.pm
 lib/IO/Uncompress/Adapter/LZO.pm
 Makefile.PL
 t/000prereq.t
-t/050interop-lzop.t
 t/100generic-lzop.t
 t/101truncate-lzop.t
 t/102tied-lzop.t

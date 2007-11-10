@@ -1,14 +1,14 @@
 --- #YAML:1.0
 name:                IO-Compress-Lzop
-version:             2.006
+version:             2.008
 abstract:            Write lzop files/buffers
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.36
 distribution_type:   module
 requires:     
     Compress::LZO:                 0
-    IO::Compress::Base:            2.006
-    IO::Uncompress::Base:          2.006
+    IO::Compress::Base:            2.008
+    IO::Uncompress::Base:          2.008
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.2.html
     version: 1.2

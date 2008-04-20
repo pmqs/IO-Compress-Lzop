@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.008 ;
+use IO::Compress::Base 2.009 ;
 
-use IO::Compress::Base::Common  2.008 qw(createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.008 ;
+use IO::Compress::Base::Common  2.009 qw(createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.009 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.008 ;
+use IO::Compress::Lzop::Constants  2.009 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.008';
+$VERSION = '2.009';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -160,7 +160,7 @@ sub getExtraParams
 {
     my $self = shift ;
 
-    use IO::Compress::Base::Common  2.008 qw(:Parse);
+    use IO::Compress::Base::Common  2.009 qw(:Parse);
     
     return (
             'Name'      => [0, 1, Parse_any,       undef],
@@ -208,8 +208,6 @@ __END__
 
 =head1 NAME
 
-
-
 IO::Compress::Lzop - Write lzop files/buffers
  
  
@@ -217,7 +215,6 @@ IO::Compress::Lzop - Write lzop files/buffers
 =head1 SYNOPSIS
 
     use IO::Compress::Lzop qw(lzop $LzopError) ;
-
 
     my $status = lzop $input => $output [,OPTS] 
         or die "lzop failed: $LzopError\n";
@@ -258,23 +255,11 @@ IO::Compress::Lzop - Write lzop files/buffers
 
 =head1 DESCRIPTION
 
-
 This module provides a Perl interface that allows writing lzop 
 compressed data to files or buffer.
 
-
-
-
-
-
-
-
-
-
-
 For reading lzop files/buffers, see the companion module 
 L<IO::Uncompress::UnLzop|IO::Uncompress::UnLzop>.
-
 
 =head1 Functional Interface
 
@@ -288,13 +273,9 @@ section.
     lzop $input => $output [,OPTS] 
         or die "lzop failed: $LzopError\n";
 
-
-
 The functional interface needs Perl5.005 or better.
 
-
 =head2 lzop $input => $output [, OPTS]
-
 
 C<lzop> expects at least two parameters, C<$input> and C<$output>.
 
@@ -334,8 +315,6 @@ The input data will be read from each file in turn.
 The complete array will be walked to ensure that it only
 contains valid filenames before any data is compressed.
 
-
-
 =item An Input FileGlob string
 
 If C<$input> is a string that is delimited by the characters "<" and ">"
@@ -346,11 +325,9 @@ If the fileglob does not match any files ...
 
 See L<File::GlobMapper|File::GlobMapper> for more details.
 
-
 =back
 
 If the C<$input> parameter is any other type, C<undef> will be returned.
-
 
 In addition, if C<$input> is a simple filename, the default values for
 the C<Name> and C<Time> options will be sourced from that file.
@@ -358,8 +335,6 @@ the C<Name> and C<Time> options will be sourced from that file.
 If you do not want to use these defaults they can be overridden by
 explicitly setting the C<Name> and C<Time> options or by setting the
 C<Minimal> parameter.
-
-
 
 =head3 The C<$output> parameter
 
@@ -380,13 +355,10 @@ If the C<$output> parameter is a filehandle, the compressed data
 will be written to it.
 The string '-' can be used as an alias for standard output.
 
-
 =item A scalar reference 
 
 If C<$output> is a scalar reference, the compressed data will be
 stored in C<$$output>.
-
-
 
 =item An Array Reference
 
@@ -406,20 +378,11 @@ string. Anything else is an error.
 
 If the C<$output> parameter is any other type, C<undef> will be returned.
 
-
-
 =head2 Notes
-
-
 
 When C<$input> maps to multiple files/buffers and C<$output> is a single
 file/buffer the input files/buffers will each be stored
 in C<$output> as a distinct entry.
-
-
-
-
-
 
 =head2 Optional Parameters
 
@@ -440,26 +403,17 @@ completed.
 
 This parameter defaults to 0.
 
-
 =item C<< BinModeIn => 0|1 >>
 
 When reading from a file or filehandle, set C<binmode> before reading.
 
 Defaults to 0.
 
-
-
-
-
 =item C<< Append => 0|1 >>
 
 TODO
 
-
-
 =back
-
-
 
 =head2 Examples
 
@@ -473,7 +427,6 @@ data to the file C<file1.txt.lzo>.
     my $input = "file1.txt";
     lzop $input => "$input.lzo"
         or die "lzop failed: $LzopError\n";
-
 
 To read from an existing Perl filehandle, C<$input>, and write the
 compressed data to a buffer, C<$buffer>.
@@ -511,7 +464,6 @@ and if you want to compress each file one at a time, this will do the trick
         lzop $input => $output 
             or die "Error compressing '$input': $LzopError\n";
     }
-
 
 =head1 OO Interface
 
@@ -551,7 +503,6 @@ will be written to it.
 If the C<$output> parameter is a filehandle, the compressed data will be
 written to it.
 The string '-' can be used as an alias for standard output.
-
 
 =item A scalar reference 
 
@@ -608,7 +559,6 @@ to it.  Otherwise the file pointer will not be moved.
 
 This parameter defaults to 0.
 
-
 =item C<< Name => $string >>
 
 Stores the contents of C<$string> in the name field lzop header. 
@@ -644,20 +594,9 @@ No Name is stored.
 
 TODO
 
-
-
-
-
-
-
-
 =item C<< Strict => 0|1 >>
 
-
-
 This is a placeholder option.
-
-
 
 =back
 
@@ -720,18 +659,13 @@ unsuccessful.
 
 Usage is
 
-
     $z->flush;
-
 
 Flushes any pending compressed data to the output file/buffer.
 
-
 TODO
 
-
 Returns true on success.
-
 
 =head2 tell
 
@@ -749,27 +683,18 @@ Usage is
     $z->eof();
     eof($z);
 
-
-
 Returns true if the C<close> method has been called.
-
-
 
 =head2 seek
 
     $z->seek($position, $whence);
     seek($z, $position, $whence);
 
-
-
-
 Provides a sub-set of the C<seek> functionality, with the restriction
 that it is only legal to seek forward in the output file/buffer.
 It is a fatal error to attempt to seek backward.
 
 Empty parts of the file/buffer will have NULL (0x00) bytes written to them.
-
-
 
 The C<$whence> parameter takes one the usual values, namely SEEK_SET,
 SEEK_CUR or SEEK_END.
@@ -812,32 +737,26 @@ retrieve the autoflush setting.
     $z->input_line_number()
     $z->input_line_number(EXPR)
 
-
 This method always returns C<undef> when compressing. 
-
-
 
 =head2 fileno
 
     $z->fileno()
     fileno($z)
 
-If the C<$z> object is associated with a file or a filehandle, this method
-will return the underlying file descriptor.
+If the C<$z> object is associated with a file or a filehandle, C<fileno>
+will return the underlying file descriptor. Once the C<close> method is
+called C<fileno> will return C<undef>.
 
-If the C<$z> object is is associated with a buffer, this method will
-return undef.
+If the C<$z> object is is associated with a buffer, this method will return
+C<undef>.
 
 =head2 close
 
     $z->close() ;
     close $z ;
 
-
-
 Flushes any pending compressed data and then closes the output file/buffer. 
-
-
 
 For most versions of Perl this method will be automatically invoked if
 the IO::Compress::Lzop object is destroyed (either explicitly or by the
@@ -857,9 +776,6 @@ If the C<AutoClose> option has been enabled when the IO::Compress::Lzop
 object was created, and the object is associated with a file, the
 underlying file will also be closed.
 
-
-
-
 =head2 newStream([OPTS])
 
 Usage is
@@ -873,19 +789,13 @@ the C<$z> object.
 
 See the L</"Constructor Options"> section for more details.
 
-
-
 =head1 Importing 
 
-
 No symbolic constants are required by this IO::Compress::Lzop at present. 
-
-
 
 =over 5
 
 =item :all
-
 
 Imports C<lzop> and C<$LzopError>.
 Same as doing this
@@ -896,21 +806,13 @@ Same as doing this
 
 =back
 
-For 
-
 =head1 EXAMPLES
 
-TODO
+=head2 Apache::GZip Revisited
 
+See L<IO::Compress::Lzop::FAQ|IO::Compress::Lzop::FAQ/"Apache::GZip Revisited">
 
-
-
-
-
-
-
-
-
+    
 
 =head1 SEE ALSO
 
@@ -922,15 +824,9 @@ L<File::GlobMapper|File::GlobMapper>, L<Archive::Zip|Archive::Zip>,
 L<Archive::Tar|Archive::Tar>,
 L<IO::Zlib|IO::Zlib>
 
-
-
-
-
 =head1 AUTHOR
 
 This module was written by Paul Marquess, F<pmqs@cpan.org>. 
-
-
 
 =head1 MODIFICATION HISTORY
 
@@ -938,9 +834,8 @@ See the Changes file.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2005-2007 Paul Marquess. All rights reserved.
+Copyright (c) 2005-2008 Paul Marquess. All rights reserved.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
-
 

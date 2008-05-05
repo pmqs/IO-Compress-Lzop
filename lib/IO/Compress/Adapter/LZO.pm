@@ -4,11 +4,11 @@ use strict;
 use warnings;
 use bytes;
 
-use IO::Compress::Base::Common  2.009 qw(:Status);
+use IO::Compress::Base::Common  2.010 qw(:Status);
 use Compress::LZO qw(crc32 adler32);
 
 our ($VERSION);
-$VERSION = '2.009';
+$VERSION = '2.010';
 
 sub mkCompObject
 {

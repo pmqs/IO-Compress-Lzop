@@ -104,22 +104,22 @@ Firstly, here is code that uses C<retr> to uncompressed a file as it is
 read from the FTP Server.
 
     use Net::FTP;
-    use IO::Uncompress::Bunzip2 qw(:all);
+    use IO::Uncompress::Gunzip qw(:all);
 
     my $ftp = new Net::FTP ...
 
     my $retr_fh = $ftp->retr($compressed_filename);
-    bunzip2 $retr_fh => $outFilename, AutoClose => 1
-        or die "Cannot uncompress '$compressed_file': $Bunzip2Error\n";
+    gunzip $retr_fh => $outFilename, AutoClose => 1
+        or die "Cannot uncompress '$compressed_file': $GunzipError\n";
 
 and this to compress a file as it is written to the FTP Server 
 
     use Net::FTP;
-    use IO::Compress::Bzip2 qw(:all);
+    use IO::Compress::Gzip qw(:all);
 
     my $stor_fh = $ftp->stor($filename);
-    bzip2 "filename" => $stor_fh, AutoClose => 1
-        or die "Cannot compress '$filename': $Bzip2Error\n";
+    gzip "filename" => $stor_fh, AutoClose => 1
+        or die "Cannot compress '$filename': $GzipError\n";
 
 =head2 How do I recompress using a different compression?
 
@@ -339,7 +339,7 @@ See the Changes file.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2005-2008 Paul Marquess. All rights reserved.
+Copyright (c) 2005-2009 Paul Marquess. All rights reserved.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

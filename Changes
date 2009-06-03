@@ -1,6 +1,10 @@
 CHANGES
 -------
 
+  2.020 3 June 2009
+
+      * Added 'ConsumesInput' attribute to Adapter
+
   2.019 3 May 2009
 
       * No Changes

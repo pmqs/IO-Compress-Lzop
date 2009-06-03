@@ -4,11 +4,11 @@ use strict;
 use warnings;
 use bytes;
 
-use IO::Compress::Base::Common  2.019 qw(:Status);
+use IO::Compress::Base::Common  2.020 qw(:Status);
 use Compress::LZO ;
 
 our ($VERSION, @ISA);
-$VERSION = '2.019';
+$VERSION = '2.020';
 
 
 sub mkUncompObject
@@ -17,6 +17,7 @@ sub mkUncompObject
                   'CompBytes'    => 0,
                   'UnCompBytes'  => 0,        
                   'Error'        => '',
+                  'ConsumesInput' => 0,
                  } ;     
 }
 
@@ -101,7 +102,6 @@ sub sync
     #        ? STATUS_OK 
     #        : STATUS_ERROR ;
 }
-
 
 1;
 

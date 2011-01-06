@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.030 ;
+use IO::Compress::Base 2.032 ;
 
-use IO::Compress::Base::Common  2.030 qw(createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.030 ;
+use IO::Compress::Base::Common  2.032 qw(createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.032 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.030 ;
+use IO::Compress::Lzop::Constants  2.032 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.030';
+$VERSION = '2.032';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -159,7 +159,7 @@ sub getExtraParams
 {
     my $self = shift ;
 
-    use IO::Compress::Base::Common  2.030 qw(:Parse);
+    use IO::Compress::Base::Common  2.032 qw(:Parse);
     
     return (
             'Name'      => [0, 1, Parse_any,       undef],
@@ -874,7 +874,7 @@ See the Changes file.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2005-2010 Paul Marquess. All rights reserved.
+Copyright (c) 2005-2011 Paul Marquess. All rights reserved.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

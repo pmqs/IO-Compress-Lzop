@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.033 ;
+use IO::Compress::Base 2.034 ;
 
-use IO::Compress::Base::Common  2.033 qw(createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.033 ;
+use IO::Compress::Base::Common  2.034 qw(createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.034 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.033 ;
+use IO::Compress::Lzop::Constants  2.034 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.033';
+$VERSION = '2.034';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -159,7 +159,7 @@ sub getExtraParams
 {
     my $self = shift ;
 
-    use IO::Compress::Base::Common  2.033 qw(:Parse);
+    use IO::Compress::Base::Common  2.034 qw(:Parse);
     
     return (
             'Name'      => [0, 1, Parse_any,       undef],
@@ -788,7 +788,7 @@ If the C<$z> object is associated with a file or a filehandle, C<fileno>
 will return the underlying file descriptor. Once the C<close> method is
 called C<fileno> will return C<undef>.
 
-If the C<$z> object is is associated with a buffer, this method will return
+If the C<$z> object is associated with a buffer, this method will return
 C<undef>.
 
 =head2 close

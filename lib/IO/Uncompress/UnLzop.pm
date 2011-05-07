@@ -4,18 +4,18 @@ use strict ;
 use warnings;
 use bytes;
 
-use IO::Compress::Base::Common  2.034 qw(:Status createSelfTiedObject);
+use IO::Compress::Base::Common  2.035 qw(:Status createSelfTiedObject);
 
-use IO::Uncompress::Base  2.034 ;
-use IO::Uncompress::Adapter::LZO  2.034 ;
+use IO::Uncompress::Base  2.035 ;
+use IO::Uncompress::Adapter::LZO  2.035 ;
 use Compress::LZO qw(crc32 adler32);
-use IO::Compress::Lzop::Constants  2.034 ;
+use IO::Compress::Lzop::Constants  2.035 ;
 
 
 require Exporter ;
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $UnLzopError);
 
-$VERSION = '2.034';
+$VERSION = '2.035';
 $UnLzopError = '';
 
 @ISA    = qw( Exporter IO::Uncompress::Base );

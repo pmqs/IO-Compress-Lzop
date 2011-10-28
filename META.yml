@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               IO-Compress-Lzop
-version:            2.037
+version:            2.039
 abstract:           Write lzop files/buffers
 author:
     - Paul Marquess <pmqs@cpan.org>
@@ -12,8 +12,8 @@ build_requires:
     ExtUtils::MakeMaker:  0
 requires:
     Compress::LZO:        0
-    IO::Compress::Base:   2.037
-    IO::Uncompress::Base:  2.037
+    IO::Compress::Base:   2.039
+    IO::Uncompress::Base:  2.039
 no_index:
     directory:
         - t

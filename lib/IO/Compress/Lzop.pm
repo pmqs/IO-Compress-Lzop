@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.043 ;
+use IO::Compress::Base 2.044 ;
 
-use IO::Compress::Base::Common  2.043 qw(createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.043 ;
+use IO::Compress::Base::Common  2.044 qw(isaScalar createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.044 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.043 ;
+use IO::Compress::Lzop::Constants  2.044 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.043';
+$VERSION = '2.044';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -159,7 +159,7 @@ sub getExtraParams
 {
     my $self = shift ;
 
-    use IO::Compress::Base::Common  2.043 qw(:Parse);
+    use IO::Compress::Base::Common  2.044 qw(:Parse);
     
     return (
             'Name'      => [0, 1, Parse_any,       undef],
@@ -189,6 +189,9 @@ sub getFileInfo
     my $params = shift;
     my $filename = shift ;
     
+    return 
+      if isaScalar($filename) ;
+
     my ($defaultMode, $defaultTime) = (stat($filename))[2, 9] ;
 
     $params->value('Name' => $filename)
@@ -848,17 +851,11 @@ Same as doing this
 
 =head1 EXAMPLES
 
-=head2 Apache::GZip Revisited
-
-See L<IO::Compress::Lzop::FAQ|IO::Compress::Lzop::FAQ/"Apache::GZip Revisited">
-
-    
-
 =head1 SEE ALSO
 
 L<Compress::Zlib>, L<IO::Compress::Gzip>, L<IO::Uncompress::Gunzip>, L<IO::Compress::Deflate>, L<IO::Uncompress::Inflate>, L<IO::Compress::RawDeflate>, L<IO::Uncompress::RawInflate>, L<IO::Compress::Bzip2>, L<IO::Uncompress::Bunzip2>, L<IO::Compress::Lzma>, L<IO::Uncompress::UnLzma>, L<IO::Compress::Xz>, L<IO::Uncompress::UnXz>, L<IO::Uncompress::UnLzop>, L<IO::Compress::Lzf>, L<IO::Uncompress::UnLzf>, L<IO::Uncompress::AnyInflate>, L<IO::Uncompress::AnyUncompress>
 
-L<Compress::Zlib::FAQ|Compress::Zlib::FAQ>
+L<IO::Compress::FAQ|IO::Compress::FAQ>
 
 L<File::GlobMapper|File::GlobMapper>, L<Archive::Zip|Archive::Zip>,
 L<Archive::Tar|Archive::Tar>,

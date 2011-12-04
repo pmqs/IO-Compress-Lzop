@@ -1,7 +1,6 @@
 README
 lib/IO/Uncompress/UnLzop.pm
 lib/IO/Compress/Lzop.pm
-lib/IO/Compress/Lzop/FAQ.pod
 lib/IO/Compress/Lzop/Constants.pm
 lib/IO/Compress/Adapter/LZO.pm
 lib/IO/Uncompress/Adapter/LZO.pm

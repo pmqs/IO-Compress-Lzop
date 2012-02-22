@@ -19,6 +19,6 @@ no_index:
     - inc
 requires:
   Compress::LZO: 0
-  IO::Compress::Base: 2.050
-  IO::Uncompress::Base: 2.050
-version: 2.050
+  IO::Compress::Base: 2.051
+  IO::Uncompress::Base: 2.051
+version: 2.051

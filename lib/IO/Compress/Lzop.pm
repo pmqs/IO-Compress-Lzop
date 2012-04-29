@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.051 ;
+use IO::Compress::Base 2.052 ;
 
-use IO::Compress::Base::Common  2.051 qw(isaScalar createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.051 ;
+use IO::Compress::Base::Common  2.052 qw(isaScalar createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.052 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.051 ;
+use IO::Compress::Lzop::Constants  2.052 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.051';
+$VERSION = '2.052';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -159,7 +159,7 @@ sub getExtraParams
 {
     my $self = shift ;
 
-    use IO::Compress::Base::Common  2.051 qw(:Parse);
+    use IO::Compress::Base::Common  2.052 qw(:Parse);
     
     return (
             'Name'      => [0, 1, Parse_any,       undef],

@@ -17,8 +17,10 @@ no_index:
   directory:
     - t
     - inc
+    - t
+    - private
 requires:
   Compress::LZO: 0
-  IO::Compress::Base: 2.051
-  IO::Uncompress::Base: 2.051
-version: 2.051
+  IO::Compress::Base: 2.052
+  IO::Uncompress::Base: 2.052
+version: 2.052

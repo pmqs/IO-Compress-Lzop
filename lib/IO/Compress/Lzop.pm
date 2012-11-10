@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.055 ;
+use IO::Compress::Base 2.057 ;
 
-use IO::Compress::Base::Common  2.055 qw(isaScalar createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.055 ;
+use IO::Compress::Base::Common  2.057 qw(isaScalar createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.057 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.055 ;
+use IO::Compress::Lzop::Constants  2.057 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.055';
+$VERSION = '2.057';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -53,24 +53,24 @@ sub mkHeader
 
     my $filename = '';
 
-    my $time = $param->value('Time') ;
+    my $time = $param->getValue('time') ;
     
     my $flags = F_OS_UNIX  ;
-    if (! $param->value('Minimal')) {
+    if (! $param->getValue('minimal')) {
         $flags |= F_ADLER32_D | F_ADLER32_C ;
-        $filename = $param->value('Name') || '';
+        $filename = $param->getValue('name') || '';
     }
 
     my $mode = 0 ;
-    if ($param->value('Mode')) {
-        $mode = $param->value('Mode');
+    if ($param->getValue('mode')) {
+        $mode = $param->getValue('mode');
     }
 
     my $xtr = '';
-    if ($param->parsed('Extra')) {
+    if ($param->parsed('extra')) {
         $flags |= F_H_EXTRA_FIELD ;
 
-        my $extra = $param->value('Extra') ;
+        my $extra = $param->getValue('extra') ;
         $xtr .= pack 'N', length($extra)  ; # Extra Length
         $xtr .= $extra                    ; # Extra Data
         $xtr .= pack 'N', adler32($xtr)   ; # Extra CRC
@@ -108,12 +108,12 @@ sub ckParams
     my $self = shift ;
     my $got = shift;
     
-    if (! $got->parsed('Time') ) {
+    if (! $got->parsed('time') ) {
         # Modification time defaults to now.
-        $got->value('Time' => time) ;
+        $got->setValue('time' => time) ;
     }
 
-    #*$self->{LZOP}{Adler32} = ($got->value('??') ? 0 : 1) ;
+    #*$self->{LZOP}{Adler32} = ($got->getValue('??') ? 0 : 1) ;
     
     return 1 ;
 }
@@ -125,9 +125,9 @@ sub mkComp
     my $got = shift ;
 
     my ($obj, $errstr, $errno) =  IO::Compress::Adapter::LZO::mkCompObject(
-                                              $got->value('BlockSize'),
-                                              $got->value('Optimize'),
-                                              $got->value('Minimal'),
+                                              $got->getValue('blocksize'),
+                                              $got->getValue('optimize'),
+                                              $got->getValue('minimal'),
                                           );
 
     return $self->saveErrorString(undef, $errstr, $errno)
@@ -155,27 +155,24 @@ sub mkFinalTrailer
 #    return '';
 #}
 
+our %PARAMS = (
+    'name'      => [IO::Compress::Base::Common::Parse_any,       undef],
+    'time'      => [IO::Compress::Base::Common::Parse_any,       undef],
+    'mode'      => [IO::Compress::Base::Common::Parse_any,       0],
+    'extra'     => [IO::Compress::Base::Common::Parse_any,       undef],
+    'minimal'   => [IO::Compress::Base::Common::Parse_boolean,   0],
+    'blocksize' => [IO::Compress::Base::Common::Parse_unsigned,  BLOCK_SIZE],
+    'optimize'  => [IO::Compress::Base::Common::Parse_boolean,   1],
+
+   # TODO 
+   #   none
+   #   crc32
+   #   adler32
+       );
+
 sub getExtraParams
 {
-    my $self = shift ;
-
-    use IO::Compress::Base::Common  2.055 qw(:Parse);
-    
-    return (
-            'Name'      => [0, 1, Parse_any,       undef],
-            'Time'      => [0, 1, Parse_any,       undef],
-            'Mode'      => [0, 1, Parse_any,       0],
-            'Extra'     => [0, 1, Parse_any,       undef],
-            'Minimal'   => [0, 1, Parse_boolean,   0],
-            'BlockSize' => [0, 1, Parse_unsigned,  BLOCK_SIZE],
-            'Optimize'  => [0, 1, Parse_boolean,   1],
-
-           # TODO 
-           #   none
-           #   crc32
-           #   adler32
-        );
-    
+    return %PARAMS ;
 }
 
 sub getInverseClass
@@ -194,14 +191,14 @@ sub getFileInfo
 
     my ($defaultMode, $defaultTime) = (stat($filename))[2, 9] ;
 
-    $params->value('Name' => $filename)
-        if ! $params->parsed('Name') ;
+    $params->setValue('name' => $filename)
+        if ! $params->parsed('name') ;
 
-    $params->value('Time' => $defaultTime) 
-        if ! $params->parsed('Time') ;
+    $params->setValue('time' => $defaultTime) 
+        if ! $params->parsed('time') ;
 
-    $params->value('Mode' => $defaultMode) 
-        if ! $params->parsed('Mode') ;
+    $params->setValue('mode' => $defaultMode) 
+        if ! $params->parsed('mode') ;
 }
 
 1;

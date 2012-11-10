@@ -4,18 +4,18 @@ use strict ;
 use warnings;
 use bytes;
 
-use IO::Compress::Base::Common  2.055 qw(:Status createSelfTiedObject);
+use IO::Compress::Base::Common  2.057 qw(:Status createSelfTiedObject);
 
-use IO::Uncompress::Base  2.055 ;
-use IO::Uncompress::Adapter::LZO  2.055 ;
+use IO::Uncompress::Base  2.057 ;
+use IO::Uncompress::Adapter::LZO  2.057 ;
 use Compress::LZO qw(crc32 adler32);
-use IO::Compress::Lzop::Constants  2.055 ;
+use IO::Compress::Lzop::Constants  2.057 ;
 
 
 require Exporter ;
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $UnLzopError);
 
-$VERSION = '2.055';
+$VERSION = '2.057';
 $UnLzopError = '';
 
 @ISA    = qw( Exporter IO::Uncompress::Base );
@@ -875,6 +875,13 @@ Returns true if the end of the compressed input stream has been reached.
 Provides a sub-set of the C<seek> functionality, with the restriction
 that it is only legal to seek forward in the input file/buffer.
 It is a fatal error to attempt to seek backward.
+
+Note that the implementation of C<seek> in this module does not provide
+true random access to a compressed file/buffer. It  works by uncompressing
+data from the current offset in the file/buffer until it reaches the
+ucompressed offset specified in the parameters to C<seek>. For very small
+files this may be acceptable behaviour. For large files it may cause an
+unacceptable delay.
 
 The C<$whence> parameter takes one the usual values, namely SEEK_SET,
 SEEK_CUR or SEEK_END.

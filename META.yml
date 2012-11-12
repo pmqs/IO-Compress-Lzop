@@ -21,6 +21,6 @@ no_index:
     - private
 requires:
   Compress::LZO: 0
-  IO::Compress::Base: 2.057
-  IO::Uncompress::Base: 2.057
-version: 2.057
+  IO::Compress::Base: 2.058
+  IO::Uncompress::Base: 2.058
+version: 2.058

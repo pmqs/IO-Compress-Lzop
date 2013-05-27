@@ -4,18 +4,18 @@ use strict ;
 use warnings;
 use bytes;
 
-use IO::Compress::Base::Common  2.060 qw(:Status createSelfTiedObject);
+use IO::Compress::Base::Common  2.061 qw(:Status createSelfTiedObject);
 
-use IO::Uncompress::Base  2.060 ;
-use IO::Uncompress::Adapter::LZO  2.060 ;
+use IO::Uncompress::Base  2.061 ;
+use IO::Uncompress::Adapter::LZO  2.061 ;
 use Compress::LZO qw(crc32 adler32);
-use IO::Compress::Lzop::Constants  2.060 ;
+use IO::Compress::Lzop::Constants  2.061 ;
 
 
 require Exporter ;
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $UnLzopError);
 
-$VERSION = '2.060';
+$VERSION = '2.061';
 $UnLzopError = '';
 
 @ISA    = qw( Exporter IO::Uncompress::Base );
@@ -371,7 +371,7 @@ section.
 
 The functional interface needs Perl5.005 or better.
 
-=head2 unlzop $input => $output [, OPTS]
+=head2 unlzop $input_filename_or_reference => $output_filename_or_reference [, OPTS]
 
 C<unlzop> expects at least two parameters,
 C<$input_filename_or_reference> and C<$output_filename_or_reference>.

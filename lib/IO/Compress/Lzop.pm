@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.060 ;
+use IO::Compress::Base 2.061 ;
 
-use IO::Compress::Base::Common  2.060 qw(isaScalar createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.060 ;
+use IO::Compress::Base::Common  2.061 qw(isaScalar createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.061 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.060 ;
+use IO::Compress::Lzop::Constants  2.061 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.060';
+$VERSION = '2.061';
 $LzopError = '';
 
 @ISA    = qw(Exporter IO::Compress::Base);
@@ -274,7 +274,7 @@ section.
 
 The functional interface needs Perl5.005 or better.
 
-=head2 lzop $input => $output [, OPTS]
+=head2 lzop $input_filename_or_reference => $output_filename_or_reference [, OPTS]
 
 C<lzop> expects at least two parameters,
 C<$input_filename_or_reference> and C<$output_filename_or_reference>.

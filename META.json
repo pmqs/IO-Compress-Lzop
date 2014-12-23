@@ -35,11 +35,11 @@
       "runtime" : {
          "requires" : {
             "Compress::LZO" : 0,
-            "IO::Compress::Base" : "2.067",
-            "IO::Uncompress::Base" : "2.067"
+            "IO::Compress::Base" : "2.068",
+            "IO::Uncompress::Base" : "2.068"
          }
       }
    },
    "release_status" : "stable",
-   "version" : "2.067"
+   "version" : "2.068"
 }

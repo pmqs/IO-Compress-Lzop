@@ -4,18 +4,18 @@ use strict ;
 use warnings;
 use bytes;
 
-use IO::Compress::Base::Common  2.069 qw(:Status createSelfTiedObject);
+use IO::Compress::Base::Common  2.070 qw(:Status createSelfTiedObject);
 
-use IO::Uncompress::Base  2.069 ;
-use IO::Uncompress::Adapter::LZO  2.069 ;
+use IO::Uncompress::Base  2.070 ;
+use IO::Uncompress::Adapter::LZO  2.070 ;
 use Compress::LZO qw(crc32 adler32);
-use IO::Compress::Lzop::Constants  2.069 ;
+use IO::Compress::Lzop::Constants  2.070 ;
 
 
 require Exporter ;
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $UnLzopError);
 
-$VERSION = '2.069';
+$VERSION = '2.070';
 $UnLzopError = '';
 
 @ISA    = qw( Exporter IO::Uncompress::Base );
@@ -1047,7 +1047,7 @@ L<IO::Zlib|IO::Zlib>
 
 =head1 AUTHOR
 
-This module was written by Paul Marquess, F<pmqs@cpan.org>. 
+This module was written by Paul Marquess, C<pmqs@cpan.org>. 
 
 =head1 MODIFICATION HISTORY
 
@@ -1055,7 +1055,7 @@ See the Changes file.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2005-2015 Paul Marquess. All rights reserved.
+Copyright (c) 2005-2016 Paul Marquess. All rights reserved.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

@@ -43,7 +43,7 @@ sub myGZreadFile
 sub run
 {
     my $CompressClass   = identify();
-    $UncompressClass = getInverse($CompressClass);
+    $UncompressClass    = getInverse($CompressClass);
     my $Error           = getErrorRef($CompressClass);
     my $UnError         = getErrorRef($UncompressClass);
 
@@ -525,7 +525,7 @@ EOM
             ok $x->binmode();
             1 while $x->read($uncomp) > 0 ;
 
-            ok $uncomp eq $hello ;
+            is $uncomp, $hello ;
             my $rest ;
             read($fh1, $rest, 5000);
             is $x->trailingData() . $rest, $trailer ;

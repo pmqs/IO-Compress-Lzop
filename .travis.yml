@@ -1,3 +1,7 @@
 language: perl
 os:
   - linux
+before_install:
+    - cpanm Compress::Lzop # optional dependency
+install:
+    - cpanm -v --installdeps --notest .

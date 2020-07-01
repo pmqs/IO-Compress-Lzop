@@ -1,6 +1,7 @@
 language: perl
 perl:
   - "5.30"
+  - "5.32"
 os:
   - linux
 before_install:

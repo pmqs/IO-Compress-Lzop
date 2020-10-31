@@ -40,13 +40,13 @@ sub lzop
 #sub ckSum
 #{
 #    my $self = shift ;
-#    
+#
 #    return adler32($_[0]) if *$self->{LZOP}{Adler32} ;
 #    return crc32($_[0]) if *$self->{LZOP}{CRRC32} ;
 #    return '';
 #}
 
-sub mkHeader 
+sub mkHeader
 {
     my $self = shift ;
     my $param = shift ;
@@ -54,7 +54,7 @@ sub mkHeader
     my $filename = '';
 
     my $time = $param->getValue('time') ;
-    
+
     my $flags = F_OS_UNIX  ;
     if (! $param->getValue('minimal')) {
         $flags |= F_ADLER32_D | F_ADLER32_C ;
@@ -75,10 +75,10 @@ sub mkHeader
         $xtr .= $extra                    ; # Extra Data
         $xtr .= pack 'N', adler32($xtr)   ; # Extra CRC
     }
-    
+
     my $hdr = '' ;
 
-    $hdr .= pack 'n', 0x1010     ; # lzop Version 
+    $hdr .= pack 'n', 0x1010     ; # lzop Version
     $hdr .= pack 'n', 0x1080     ; # LZO library version
     $hdr .= pack 'n', 0x1010     ; # lzop extract version
     $hdr .= pack 'C', 1          ; # Method
@@ -107,14 +107,14 @@ sub ckParams
 {
     my $self = shift ;
     my $got = shift;
-    
+
     if (! $got->parsed('time') ) {
         # Modification time defaults to now.
         $got->setValue('time' => time) ;
     }
 
     #*$self->{LZOP}{Adler32} = ($got->getValue('??') ? 0 : 1) ;
-    
+
     return 1 ;
 }
 
@@ -133,8 +133,8 @@ sub mkComp
     return $self->saveErrorString(undef, $errstr, $errno)
         if ! defined $obj;
 
-    return $obj;    
-                                          
+    return $obj;
+
 }
 
 
@@ -164,7 +164,7 @@ our %PARAMS = (
     'blocksize' => [IO::Compress::Base::Common::Parse_unsigned,  BLOCK_SIZE],
     'optimize'  => [IO::Compress::Base::Common::Parse_boolean,   1],
 
-   # TODO 
+   # TODO
    #   none
    #   crc32
    #   adler32
@@ -185,8 +185,8 @@ sub getFileInfo
     my $self = shift ;
     my $params = shift;
     my $filename = shift ;
-    
-    return 
+
+    return
       if isaScalar($filename) ;
 
     my ($defaultMode, $defaultTime) = (stat($filename))[2, 9] ;
@@ -194,10 +194,10 @@ sub getFileInfo
     $params->setValue('name' => $filename)
         if ! $params->parsed('name') ;
 
-    $params->setValue('time' => $defaultTime) 
+    $params->setValue('time' => $defaultTime)
         if ! $params->parsed('time') ;
 
-    $params->setValue('mode' => $defaultMode) 
+    $params->setValue('mode' => $defaultMode)
         if ! $params->parsed('mode') ;
 }
 
@@ -901,4 +901,3 @@ Copyright (c) 2005-2020 Paul Marquess. All rights reserved.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
-

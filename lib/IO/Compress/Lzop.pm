@@ -216,7 +216,7 @@ IO::Compress::Lzop - Write lzop files/buffers
     my $status = lzop $input => $output [,OPTS]
         or die "lzop failed: $LzopError\n";
 
-    my $z = new IO::Compress::Lzop $output [,OPTS]
+    my $z = IO::Compress::Lzop->new( $output [,OPTS] )
         or die "lzop failed: $LzopError\n";
 
     $z->print($string);
@@ -499,7 +499,7 @@ compressed data to a buffer, C<$buffer>.
     use IO::Compress::Lzop qw(lzop $LzopError) ;
     use IO::File ;
 
-    my $input = new IO::File "<file1.txt"
+    my $input = IO::File->new( "<file1.txt" )
         or die "Cannot open 'file1.txt': $!\n" ;
     my $buffer ;
     lzop $input => \$buffer
@@ -536,7 +536,7 @@ and if you want to compress each file one at a time, this will do the trick
 
 The format of the constructor for C<IO::Compress::Lzop> is shown below
 
-    my $z = new IO::Compress::Lzop $output [,OPTS]
+    my $z = IO::Compress::Lzop->new( $output [,OPTS] )
         or die "IO::Compress::Lzop failed: $LzopError\n";
 
 It returns an C<IO::Compress::Lzop> object on success and undef on failure.

@@ -35,7 +35,7 @@ jobs:
     - name: Perl version
       run: perl -V
     - name: Install liblzo
-      run: apt-get liblzo2-dev
+      run: apt-get install liblzo2-dev
     - name: Install dependencies
       run: cpanm --quiet --installdeps --notest .
     - name: Build

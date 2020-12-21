@@ -1,10 +1,12 @@
 language: perl
 perl:
-  - "5.30"
   - "5.32"
+    - "5.30"
+
 os:
   - linux
 before_install:
+    - sudo apt-get install liblzo2-dev
     - cpanm Compress::LZO # optional dependency
 install:
     - cpanm -v --installdeps --notest .

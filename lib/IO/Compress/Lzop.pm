@@ -5,16 +5,16 @@ use warnings;
 require Exporter ;
 use bytes;
 
-use IO::Compress::Base 2.204 ;
+use IO::Compress::Base 2.205 ;
 
-use IO::Compress::Base::Common  2.204 qw(isaScalar createSelfTiedObject);
-use IO::Compress::Adapter::LZO  2.204 ;
+use IO::Compress::Base::Common  2.205 qw(isaScalar createSelfTiedObject);
+use IO::Compress::Adapter::LZO  2.205 ;
 use Compress::LZO qw(crc32 adler32 LZO_VERSION);
-use IO::Compress::Lzop::Constants  2.204 ;
+use IO::Compress::Lzop::Constants  2.205 ;
 
 our ($VERSION, @ISA, @EXPORT_OK, %EXPORT_TAGS, $LzopError);
 
-$VERSION = '2.204';
+$VERSION = '2.205';
 $LzopError = '';
 
 @ISA    = qw( IO::Compress::Base Exporter );

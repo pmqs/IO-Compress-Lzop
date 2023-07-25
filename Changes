@@ -1,6 +1,16 @@
 CHANGES
 -------
 
+  2.206 25 July 2023
+
+    * 2.206
+      Tue, 25 Jul 2023 16:45:35 +0100
+      d2ddc58ded2b5996b0402bba21d3655c43c53a4e
+
+    * drop rt.cpan from SUPPORT section
+      Tue, 18 Jul 2023 09:21:00 +0100
+      6284423e255363da518383016914b1d010fa43af
+
   2.205 16 July 2023
 
     * 2.205

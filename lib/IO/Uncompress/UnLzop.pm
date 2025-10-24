@@ -21,7 +21,7 @@ $UnLzopError = '';
 @ISA    = qw( IO::Uncompress::Base Exporter );
 @EXPORT_OK = qw( $UnLzopError unlzop ) ;
 #%EXPORT_TAGS = %IO::Uncompress::Base::EXPORT_TAGS ;
-push @{ $EXPORT_TAGS{all} }, @EXPORT_OK ;
+$EXPORT_TAGS{all} = [ defined $EXPORT_TAGS{all} ? @{ $EXPORT_TAGS{all} } : (), @EXPORT_OK ] ;
 #Exporter::export_ok_tags('all');
 
 

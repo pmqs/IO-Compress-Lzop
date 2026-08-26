@@ -1,16 +1,12 @@
 #! perl -w
 
 use strict ;
-require 5.006 ;
+require 5.008 ;
 
 $::VERSION = '2.217' ;
 
 use lib '.';
-use private::MakeUtil;
 use ExtUtils::MakeMaker 5.16 ;
-
-UpDowngrade(getPerlFiles('MANIFEST'))
-    unless $ENV{PERL_CORE};
 
 WriteMakefile(
     NAME         => 'IO::Compress::Lzop',
@@ -27,19 +23,12 @@ WriteMakefile(
 	    : (PREREQ_PM   => { 'Compress::LZO'        => 0,
 		                    'IO::Compress::Base'   => $::VERSION,
 		                    'IO::Uncompress::Base' => $::VERSION,
-		                    $] >= 5.005 && $] < 5.006
-                                ? ('File::BSDGlob' => 0)
-                                : () }
+                          }
 	      )
     ),
 
-    (
-    $] >= 5.005
-        ? (ABSTRACT_FROM => 'lib/IO/Compress/Lzop.pm',
-            AUTHOR       => 'Paul Marquess <pmqs@cpan.org>')
-        : ()
-    ),
-
+    ABSTRACT_FROM => 'lib/IO/Compress/Lzop.pm',
+    AUTHOR       => 'Paul Marquess <pmqs@cpan.org>',
 
      ( eval { ExtUtils::MakeMaker->VERSION(6.46) }
         ? ( META_MERGE  => {

@@ -19,15 +19,7 @@ BEGIN
     $extra = 1
         if eval { require Test::NoWarnings ;  import Test::NoWarnings; 1 };
 
-    my $tests ;
-    $BadPerl = ($] >= 5.006 and $] <= 5.008) ;
-
-    if ($BadPerl) {
-        $tests = 241 ;
-    }
-    else {
-        $tests = 249 ;
-    }
+    my $tests = 249;
 
     plan tests => $tests + $extra ;
 

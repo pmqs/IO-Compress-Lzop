@@ -1,7 +1,29 @@
 CHANGES
 -------
 
-  2.217 1 February 2027
+  2.224 28 August 2026
+
+    * Update to version 2.224
+      Fri Aug 28 15:25:42 2026 +0100
+      e42f9b4bc80d62b96ccfab1136b204171a421ff8
+
+    * remove 5.6-specific code and make 5.8 the min versionsupported
+      Wed Aug 26 16:06:52 2026 +0100
+      2b2251d45b02f394eb0feef49a36cd55ce822d83
+
+    * Bump actions/checkout from 6 to 7
+      Fri Jul 3 12:15:07 2026 +0100
+      05a3f4a225305a5b6d43137a565f5a7a56799d84
+
+    * fix spelling typo
+      Tue Feb 24 19:48:37 2026 +0000
+      bb0e1ce298830e2859da010be9a6dca67a202257
+
+    * Update Changes for 2.217
+      Sun Feb 1 11:30:01 2026 +0000
+      6508bca65a1688cc86c01cc985e6851edb402aca
+
+  2.217 1 February 2026
 
     * Update release date in README
       Sun Feb 1 11:18:43 2026 +0000

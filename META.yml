@@ -1,7 +1,7 @@
 ---
 abstract: 'Write lzop files/buffers'
 author:
-  - 'Paul Marquess <pmqs@cpan.org>'
+  - 'Paul Marquess <pmqs@outlook.com>'
 build_requires:
   ExtUtils::MakeMaker: '0'
 configure_requires:

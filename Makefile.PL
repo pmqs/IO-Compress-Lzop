@@ -29,7 +29,7 @@ WriteMakefile(
     ),
 
     ABSTRACT_FROM => 'lib/IO/Compress/Lzop.pm',
-    AUTHOR       => 'Paul Marquess <pmqs@cpan.org>',
+    AUTHOR       => 'Paul Marquess <pmqs@outlook.com>',
 
      ( eval { ExtUtils::MakeMaker->VERSION(6.46) }
         ? ( META_MERGE  => {
